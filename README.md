@@ -9,4 +9,3 @@ pip install HUST_PPS
 + Thêm hàm tính đa thực nội suy Newton, Newton mốc cách đều
 + Thêm hàm tính đa thức nội suy Lagrange mốc cách đều
 + Thêm hàm tính tỷ sai phân, sai phân tiến, sai phân lùi
-+ Sửa lỗi
