@@ -21,3 +21,6 @@ pip install HUST_PPS
 
 #### Github link
 https://github.com/Hoangbonduy/HUST_PPS
+
+##### Project link
+https://pypi.org/project/HUST-PPS/
