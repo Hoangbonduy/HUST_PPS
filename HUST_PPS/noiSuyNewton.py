@@ -1,8 +1,7 @@
 import numpy as np
 import sympy as sp
 import math
-from HUST_PPS import LapBangTichLagrange, DaThucNoiSuyLagrangeMocCachDeu
-from sympy import symbols, Poly, expand, sympify
+from HUST_PPS import LapBangTichLagrange
 
 def TinhTySaiPhan(x: np.ndarray, y: np.ndarray):
     k = len(x) - 1
@@ -68,7 +67,7 @@ def DaThucNoiSuyNewton2(a: np.ndarray, b: np.ndarray):
     
     return polynomial, simplified_polynomial
 
-def TinhCiNewton(x: np.ndarray, y:np.ndarray):
+def TinhCyNewton(x: np.ndarray, y:np.ndarray):
     ty_sai_phan = TinhTySaiPhan(x,y)
     C = []
     for i in range(0,len(x)):
@@ -76,7 +75,7 @@ def TinhCiNewton(x: np.ndarray, y:np.ndarray):
     return np.array(C)
 
 def DaThucNoiSuyNewton(x: np.ndarray, y:np.ndarray):
-    C = TinhCiNewton(x,y)
+    C = TinhCyNewton(x,y)
     # Xóa đi phần tử cuối
     x1 = x[0:len(x)-1]
     A = LapBangTichLagrange(x1)
@@ -104,6 +103,26 @@ def TinhBangSaiPhan(x: np.ndarray, y: np.ndarray):
         cnt += 1
     return np.array(zero_matrix)
 
+def ChonMoc(x0: np.float64, h: np.float64, n: int, x: np.float64, somoc: int): # Số mốc có thể là 7 hoặc 8
+    res = (x-x0)/h
+    if somoc >= n+1:
+        return res, 0, n
+    res_1 = math.floor(res)
+    left = res_1
+    right = res_1 
+    while (True):
+        if right == n and left == 0:
+            break
+        if right + 1 <= n:
+            right += 1
+        if right - left + 1 >= somoc:
+            break
+        if left - 1 >= 0:
+            left -= 1
+        if right - left + 1 >= somoc:
+            break
+    return res,left,right
+
 def LapBangTichNewtonMocCachDeu(n: int):
     res = np.zeros(n)
     for i in range(1,n):
@@ -124,32 +143,3 @@ def DaThucNoiSuyNewtonMocCachDeuThamSoT(x: np.ndarray, y:np.ndarray):
     B = TinhCyNewtonMocCachDeu(x,y)
     
     return B @ A
-
-def DaThucNoiSuyNewtonMocCachDeu(x: np.ndarray, y:np.ndarray, n:int, h:float):
-    A = DaThucNoiSuyNewtonMocCachDeuThamSoT(y, n)
-    t = symbols('t')
-    
-    # Chuyển đổi mảng NumPy thành danh sách Python và áp dụng sympify
-    A_list = [sympify(float(a)) for a in A[::-1]]
-    
-    # Tạo đa thức từ danh sách hệ số A_list
-    poly = Poly(A_list, t)
-    
-    # Thay thế t bằng (1/h)*(x-x0)
-    x_sym = symbols('x')
-    x0 = float(x[0])  # Chuyển x[0] thành float
-    substituted_poly = poly.as_expr().subs(t, (1/h)*(x_sym-x0))
-    
-    # Khai triển đa thức sau khi thay thế
-    expanded_poly = expand(substituted_poly)
-    
-    # Chuyển đổi đa thức đã khai triển thành Poly object
-    expanded_poly_obj = Poly(expanded_poly, x_sym)
-    
-    # Lấy các hệ số của đa thức
-    coeffs = expanded_poly_obj.all_coeffs()
-    
-    # Chuyển đổi các hệ số thành số thực và tạo mảng NumPy
-    numpy_coeffs = np.array([float(coeff) for coeff in coeffs])
-    
-    return numpy_coeffs
