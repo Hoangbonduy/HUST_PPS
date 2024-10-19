@@ -26,3 +26,16 @@ from .utils import FormatNumber
 from .utils import ReadxyFromFile
 from .utils import TaoGiaTriXMocCachDeu
 from .mocNoiSuy import TinhMocNoiSuy
+from .noiSuyTrungTam import TinhBangSaiPhanGaussI
+from .noiSuyTrungTam import TinhCySaiPhanGaussI
+from .noiSuyTrungTam import LapBangTichGaussI
+from .noiSuyTrungTam import DaThucNoiSuyTrungTamGaussI
+from .noiSuyTrungTam import TinhBangSaiPhanGaussII
+from .noiSuyTrungTam import TinhCySaiPhanGaussII
+from .noiSuyTrungTam import LapBangTichGaussII
+from .noiSuyTrungTam import DaThucNoiSuyTrungTamGaussII
+from .noiSuyTrungTam import LapBangTichSterling
+from .noiSuyTrungTam import TinhCyChanSterling
+from .noiSuyTrungTam import TinhBangSaiPhanLeSterling
+from .noiSuyTrungTam import TinhCyLeSterling
+from .noiSuyTrungTam import DaThucNoiSuyTrungTamSterling

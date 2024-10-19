@@ -3,7 +3,7 @@ from pathlib import Path
 
 setup(
     name='HUST_PPS',
-    version='0.2.2',
+    version='0.3.0',
     packages=find_packages(),
     install_requires=[
         'numpy>=2.1.1',

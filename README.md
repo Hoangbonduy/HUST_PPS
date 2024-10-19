@@ -5,12 +5,12 @@ Code cho môn phương pháp số tại Đại học Bách khoa Hà Nội
 pip install HUST_PPS
 
 ### Cập nhật
--0.2.0
+-0.2.0:
 + Thêm hàm tính đa thực nội suy Newton, Newton mốc cách đều
-+ Thêm hàm tính đa thức nội suy Lagrange mốc cách đều
++ Thêm hàm tính đa thức nội suy Lagrange mốc cách đều  
 + Thêm hàm tính tỷ sai phân, sai phân tiến, sai phân lùi
 
--0.2.2
+-0.2.2:
 + Thêm hàm tính Cy Lagrange
 + Thêm hàm làm tròn số
 + Thêm hàm đọc file
@@ -19,8 +19,8 @@ pip install HUST_PPS
 + Thêm hàm tính mốc nội suy
 + Bỏ thư viện sympy
 
+-0.3.0:
++ Thêm hàm tính đa thức nội suy trung tâm (Gauss I, Gauss II, Sterling)
+
 #### Github link
 https://github.com/Hoangbonduy/HUST_PPS
-
-##### Project link
-https://pypi.org/project/HUST-PPS/
